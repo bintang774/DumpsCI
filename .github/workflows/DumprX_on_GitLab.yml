@@ -1,0 +1,73 @@
+name: DumprX on GitLab
+ 
+on:
+  workflow_dispatch:
+    inputs:
+      ROM_URL:
+        description: "Direct Link of the ROM/Firmware to Dump"
+        required: true
+      EXTRA_CMD:
+        description: "Any Extra Command to Run Before Dump"
+        required: false
+
+defaults:
+  run:
+    shell: bash
+
+env:
+  # ROM
+  ROM_URL: ${{ github.event.inputs.ROM_URL }}
+
+  # Gitlab
+  PUSH_TO_GITLAB: true
+
+  # Extra Command
+  EXTRA_CMD: ${{ github.event.inputs.EXTRA_CMD }}
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+
+    steps:
+       - name: Cleanup
+         uses: rokibhasansagar/slimhub_actions@main
+
+       - name: Checkouts
+         uses: actions/checkout@v4
+
+       - name: Clone Our Firmware Dumper
+         run: |
+              git clone https://github.com/Vuong-Android-Dumps/DumprX-Script.git DumprX
+
+       - name: Setup DumprX's Environment
+         working-directory: DumprX
+         run: |
+
+              mkdir -p ~/.ssh
+              ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
+              ssh-keyscan -t rsa gitlab.com >> ~/.ssh/known_hosts
+              git config --global user.name "VanVuong41429"
+              git config --global user.email "vanvuong41429@gmail.com"
+              sudo apt install -y neofetch
+              sudo bash setup.sh
+
+       - name: Setup Config envs
+         working-directory: DumprX
+         run: |
+              echo "${{ secrets.GITLAB_TOKEN }}" > .gitlab_token  # Only for Gitlab
+              echo "Van-Firmware-Dumps" > .gitlab_group  # Only for Gitlab
+              echo "gitlab.com" > .gitlab_instance  # Only for Gitlab
+              echo "${{ secrets.PRIV_SSH_KEY }}" > ~/.ssh/id_rsa  # Only for Gitlab
+              echo "${{ secrets.BOT_TOKEN }}" > .tg_token
+              echo "@VanFirmwareDumps" > .tg_chat
+              chmod 600 ~/.ssh/id_rsa
+
+       - name: Run the Extra Command
+         working-directory: DumprX
+         run: |
+              $EXTRA_CMD
+
+       - name: Start Dumping
+         working-directory: DumprX
+         run: |
+              ./dumper.sh "$ROM_URL"
