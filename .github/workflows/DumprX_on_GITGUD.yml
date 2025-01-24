@@ -66,6 +66,12 @@ jobs:
          working-directory: DumprX
          run: |
               $EXTRA_CMD
+              df -h
+              pip3 install git+https://github.com/martinetd/samloader.git
+              samloader -m SM-S938B -r EUX -i 352901545004338 download -v S938BXXU1AYA1/S938BOXM1AYA1/S938BXXU1AYA1/S938BXXU1AYA1 -O .
+              samloader -m SM-S938B -r EUX -i 352901545004338 decrypt -v S938BXXU1AYA1/S938BOXM1AYA1/S938BXXU1AYA1/S938BXXU1AYA1 -i $(ls *SM-S938B*.enc*) -o firmware.zip
+              rm $(ls *SM-S938B*.enc*)
+              df -h
 
        - name: Start Dumping
          working-directory: DumprX
