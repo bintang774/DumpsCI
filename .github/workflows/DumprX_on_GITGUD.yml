@@ -66,12 +66,6 @@ jobs:
          working-directory: DumprX
          run: |
               $EXTRA_CMD
-              df -h
-              pip3 install git+https://github.com/martinetd/samloader.git
-              samloader -m SM-S936U -r TMB -i 352892771234568 download -v S936USQU1AYA1/S936UOYN1AYA1/S936USQU1AYA1/S936USQU1AYA1 -O . || echo 'Download failed!'
-              samloader -m SM-S936U -r TMB -i 352892771234568 decrypt -v S936USQU1AYA1/S936UOYN1AYA1/S936USQU1AYA1/S936USQU1AYA1 -i $(ls *.enc*) -o firmware.zip || echo 'Decrypt failed!'
-              rm $(ls *.enc*)
-              df -h
 
        - name: Start Dumping
          working-directory: DumprX
