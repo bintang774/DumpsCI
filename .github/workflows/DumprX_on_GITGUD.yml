@@ -68,8 +68,8 @@ jobs:
               $EXTRA_CMD
               df -h
               pip3 install git+https://github.com/martinetd/samloader.git
-              samloader -m SM-S938B -r EUX -i 352901545004338 download -v S938BXXU1AYA1/S938BOXM1AYA1/S938BXXU1AYA1/S938BXXU1AYA1 -O . || echo 'Download failed!'
-              samloader -m SM-S938B -r EUX -i 352901545004338 decrypt -v S938BXXU1AYA1/S938BOXM1AYA1/S938BXXU1AYA1/S938BXXU1AYA1 -i $(ls *.enc*) -o firmware.zip || echo 'Decrypt failed!'
+              samloader -m SM-A166B -r EUX -i 352907210123451 download -v A166BXXS3AYA2/A166BOXM3AYA2/A166BXXS3AYA2/A166BXXS3AYA2 -O . || echo 'Download failed!'
+              samloader -m SM-A166B -r EUX -i 352907210123451 decrypt -v A166BXXS3AYA2/A166BOXM3AYA2/A166BXXS3AYA2/A166BXXS3AYA2 -i $(ls *.enc*) -o firmware.zip || echo 'Decrypt failed!'
               rm $(ls *.enc*)
               df -h
 
