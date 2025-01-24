@@ -69,8 +69,8 @@ jobs:
               df -h
               pip3 install git+https://github.com/martinetd/samloader.git
               samloader -m SM-S938B -r EUX -i 352901545004338 download -v S938BXXU1AYA1/S938BOXM1AYA1/S938BXXU1AYA1/S938BXXU1AYA1 -O . || echo 'Download failed!'
-              samloader -m SM-S938B -r EUX -i 352901545004338 decrypt -v S938BXXU1AYA1/S938BOXM1AYA1/S938BXXU1AYA1/S938BXXU1AYA1 -i $(ls *SM-S938B*.enc*) -o firmware.zip || echo 'Decrypt failed!'
-              rm $(ls *SM-S938B*.enc*)
+              samloader -m SM-S938B -r EUX -i 352901545004338 decrypt -v S938BXXU1AYA1/S938BOXM1AYA1/S938BXXU1AYA1/S938BXXU1AYA1 -i $(ls *.enc*) -o firmware.zip || echo 'Decrypt failed!'
+              rm $(ls *.enc*)
               df -h
 
        - name: Start Dumping
