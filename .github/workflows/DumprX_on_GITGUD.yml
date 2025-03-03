@@ -66,12 +66,6 @@ jobs:
          working-directory: DumprX
          run: |
               $EXTRA_CMD
-              df -h
-              pip3 install git+https://github.com/martinetd/samloader.git
-              samloader -m SM-M166P -r INS -i 350604360144690 download -v M166PXXU1AYA5/M166PODM1AYA5/M166PXXU1AYA5/M166PXXU1AYA5 -O . || echo 'Download failed!'
-              samloader -m SM-M166P -r INS -i 350604360144690 decrypt -v M166PXXU1AYA5/M166PODM1AYA5/M166PXXU1AYA5/M166PXXU1AYA5 -i $(ls *.enc*) -o firmware.zip || echo 'Decrypt failed!'
-              rm $(ls *.enc*)
-              df -h
 
        - name: Start Dumping
          working-directory: DumprX
