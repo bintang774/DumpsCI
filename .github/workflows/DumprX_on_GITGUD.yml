@@ -66,6 +66,12 @@ jobs:
          working-directory: DumprX
          run: |
               $EXTRA_CMD
+              df -h
+              pip3 install git+https://github.com/martinetd/samloader.git
+              samloader -m SM-A366E -r INS -i 357178222420864 download -v A366EXXU1AYB9/A366EODM1AYB9/A366EXXU1AYBC/A366EXXU1AYB9 -O . || echo 'Download failed!'
+              samloader -m SM-A366E -r INS -i 357178222420864 decrypt -v A366EXXU1AYB9/A366EODM1AYB9/A366EXXU1AYBC/A366EXXU1AYB9 -i $(ls *.enc*) -o firmware.zip || echo 'Decrypt failed!'
+              rm $(ls *.enc*)
+              df -h
 
        - name: Start Dumping
          working-directory: DumprX
