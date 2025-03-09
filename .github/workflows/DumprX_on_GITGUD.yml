@@ -68,8 +68,8 @@ jobs:
               $EXTRA_CMD
               df -h
               pip3 install git+https://github.com/martinetd/samloader.git
-              samloader -m SM-A366E -r INS -i 357178222420864 download -v A366EXXU1AYB9/A366EODM1AYB9/A366EXXU1AYBC/A366EXXU1AYB9 -O . || echo 'Download failed!'
-              samloader -m SM-A366E -r INS -i 357178222420864 decrypt -v A366EXXU1AYB9/A366EODM1AYB9/A366EXXU1AYBC/A366EXXU1AYB9 -i $(ls *.enc*) -o firmware.zip || echo 'Decrypt failed!'
+              samloader -m SM-E166P -r INS -i 358875770102641 download -v E166PXXU1AYA5/E166PODM1AYA5/E166PXXU1AYA5/E166PXXU1AYA5 -O . || echo 'Download failed!'
+              samloader -m SM-E166P -r INS -i 358875770102641 decrypt -v E166PXXU1AYA5/E166PODM1AYA5/E166PXXU1AYA5/E166PXXU1AYA5 -i $(ls *.enc*) -o firmware.zip || echo 'Decrypt failed!'
               rm $(ls *.enc*)
               df -h
 
