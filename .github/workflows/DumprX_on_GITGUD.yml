@@ -66,6 +66,10 @@ jobs:
          working-directory: DumprX
          run: |
               $EXTRA_CMD
+              pip3 install git+https://github.com/martinetd/samloader.git
+              samloader -m SM-M066B -r INS -i 353290800138240 download -v M066BXXU1AYB3/M066BODM1AYB3/M066BXXU1AYB3/M066BXXU1AYB3 -O . || echo 'Download failed!'
+              samloader -m SM-M066B -r INS -i 353290800138240 decrypt -v M066BXXU1AYB3/M066BODM1AYB3/M066BXXU1AYB3/M066BXXU1AYB3 -i $(ls *.enc*) -o firmware.zip || echo 'Decrypt failed!'
+              rm $(ls *.enc*)
 
        - name: Start Dumping
          working-directory: DumprX
