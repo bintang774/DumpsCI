@@ -66,6 +66,10 @@ jobs:
          working-directory: DumprX
          run: |
               $EXTRA_CMD
+              aria2c -x16 -s8 --console-log-level=warn --summary-interval=0 --check-certificate=false -o TB520FU.zip "https://mirrors.lolinet.com/firmware/lenowow/2024/Yoga_Tab_Pro_2025/TB520FU/TB520FU_ROW_OPEN_USER_Q00011.0_V_ZUI_17.0.10.039_ST_250421.zip"
+              7z e -y -oTB520FU TB520FU.zip && rm TB520FU.zip
+              cd TB520FU && mv super_2.img odm.img && mv super_3.img product.img && mv super_4.img system.img && mv super_5.img system_dlkm.img && mv super_6.img system_ext.img && mv super_7.img vendor.img && mv super_8.img vendor_dlkm.img && cd ..
+              zip -r TB520FU.zip TB520FU && rm -rf TB520FU
 
        - name: Start Dumping
          working-directory: DumprX
