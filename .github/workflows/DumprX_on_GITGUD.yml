@@ -26,7 +26,7 @@ env:
 
 jobs:
   build:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
 
     steps:
        - name: Cleanup
@@ -66,10 +66,6 @@ jobs:
          working-directory: DumprX
          run: |
               $EXTRA_CMD
-              pip3 install git+https://github.com/martinetd/samloader.git
-              samloader -m SM-X526B -r EUX -i 356160460535422 download -v X526BXXS2AYD3/X526BOXM2AYD3/X526BXXS2AYD3/X526BXXS2AYD3 -O .
-              samloader -m SM-X526B -r EUX -i 356160460535422 decrypt -v X526BXXS2AYD3/X526BOXM2AYD3/X526BXXS2AYD3/X526BXXS2AYD3 -i $(ls *.enc*) -o firmware.zip
-              rm $(ls *.enc*)
 
        - name: Start Dumping
          working-directory: DumprX
