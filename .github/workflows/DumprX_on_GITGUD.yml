@@ -66,10 +66,6 @@ jobs:
          working-directory: DumprX
          run: |
               $EXTRA_CMD
-              aria2c -x16 -s8 --console-log-level=warn --summary-interval=0 --check-certificate=false -o TB322FC.7z "https://mirrors.lolinet.com/firmware/lenowow/2025/Y700_4th_Gen/TB322FC/TB322FC_S200001_2506121310_250612_PRC.7z"
-              7z e -y TB322FC.7z -oTB322FC && rm TB322FC.7z && cd TB322FC
-              mv super_2.img odm.img && mv super_3.img product.img && mv super_4.img system.img && mv super_5.img system_dlkm.img && mv super_6.img system_ext.img && mv super_7.img vendor.img && mv super_8.img vendor_dlkm.img && cd ..
-              zip -r TB322FC.zip TB322FC && rm -rf TB322FC
 
        - name: Start Dumping
          working-directory: DumprX
