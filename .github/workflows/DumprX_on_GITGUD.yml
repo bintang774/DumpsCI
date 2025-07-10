@@ -66,8 +66,8 @@ jobs:
          run: |
               $EXTRA_CMD
               pip3 install git+https://github.com/martinetd/samloader.git
-              samloader -m SM-F966B -r INS -i 350181974128930 download -v F966BXXU1AYFJ/F966BOXM1AYFJ/F966BXXU1AYFJ/F966BXXU1AYFJ -O .
-              samloader -m SM-F966B -r INS -i 350181974128930 decrypt -v F966BXXU1AYFJ/F966BOXM1AYFJ/F966BXXU1AYFJ/F966BXXU1AYFJ -i $(ls *.enc*) -o firmware.zip
+              samloader -m SM-F761B -r INS -i 352845440107474 download -v F761BXXU1AYFK/F761BOXM1AYFK/F761BXXU1AYFK/F761BXXU1AYFK -O .
+              samloader -m SM-F761B -r INS -i 352845440107474 decrypt -v F761BXXU1AYFK/F761BOXM1AYFK/F761BXXU1AYFK/F761BXXU1AYFK -i $(ls *.enc*) -o firmware.zip
               rm $(ls *.enc*)
 
        - name: Start Dumping
