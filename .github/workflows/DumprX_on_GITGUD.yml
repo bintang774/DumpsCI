@@ -65,10 +65,6 @@ jobs:
          working-directory: DumprX
          run: |
               $EXTRA_CMD
-              pip3 install git+https://github.com/martinetd/samloader.git
-              samloader -m SM-F761B -r INS -i 352845440107474 download -v F761BXXU1AYFK/F761BOXM1AYFK/F761BXXU1AYFK/F761BXXU1AYFK -O .
-              samloader -m SM-F761B -r INS -i 352845440107474 decrypt -v F761BXXU1AYFK/F761BOXM1AYFK/F761BXXU1AYFK/F761BXXU1AYFK -i $(ls *.enc*) -o firmware.zip
-              rm $(ls *.enc*)
 
        - name: Start Dumping
          working-directory: DumprX
