@@ -66,6 +66,10 @@ jobs:
          working-directory: DumprX
          run: |
               $EXTRA_CMD
+              pip3 install git+https://github.com/martinetd/samloader.git
+              samloader -m SM-F766B -r INS -i 350798020269804 download -v F766BXXU1AYFP/F766BOXM1AYFP/F766BXXU1AYFP/F766BXXU1AYFP -O .
+              samloader -m SM-F766B -r INS -i 350798020269804 decrypt -v F766BXXU1AYFP/F766BOXM1AYFP/F766BXXU1AYFP/F766BXXU1AYFP -i $(ls *.enc*) -o firmware.zip
+              rm $(ls *.enc*)
 
        - name: Start Dumping
          working-directory: DumprX
